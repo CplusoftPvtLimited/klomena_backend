@@ -50,7 +50,7 @@ export default async function handler(
       messages: [promptMessage, ...initialMessages, ...latestMessages],
     });
 
-    const responseMessage = completion.data.choices[0].message?.content.trim();
+    const responseMessage = completion?.data.choices[0].message?.content.trim();
 
     if (!responseMessage) {
       res
