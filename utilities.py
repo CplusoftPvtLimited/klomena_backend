@@ -63,7 +63,7 @@ class BOT:
         )
         response = completion.choices[0].message.content
 
-        self.update_tokens_file(int(completion.usage.total_tokens))
+        # self.update_tokens_file(int(completion.usage.total_tokens))
         return response
 
     def chatbot(self, input_text, conversation_history=[]):
