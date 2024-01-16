@@ -48,17 +48,13 @@ class BOT:
             with open(file_name, "w") as file:
                 file.write(f"total_tokens={tokens}\n")
 
-    def ask_question(self, query):
-
+    def ask_question(self, messages):
         model = os.getenv("MODEL")
         temperature = int(os.getenv("TEMPERATURE"))
-        system_prompt = os.getenv("SYSTEM_PROMPT")
+
         completion = self.client.chat.completions.create(  # Change the method name
             model=model,
-            messages=[  # Change the prompt parameter to messages parameter
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": query},
-            ],
+            messages=messages,
             temperature=temperature,
         )
         response = completion.choices[0].message.content
